@@ -44,7 +44,7 @@ export default function Login() {
             </Button>
           </ListItem>
           <ListItem>
-            Don't have an accouny? &nbsp;
+            Don`t have an accouny? &nbsp;
             <NextLink href="register" passHref>
               <Link> Register</Link>
             </NextLink>
