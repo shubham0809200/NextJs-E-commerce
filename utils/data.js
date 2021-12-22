@@ -61,7 +61,7 @@ const data = {
       description: 'A popular Shitr',
     },
     {
-      name: 'Free Shirts 4',
+      name: 'Free Shirts 5',
       slug: 'free-shirts-5',
       categories: 'shirets',
       image: '/images/pants2.jpg',
