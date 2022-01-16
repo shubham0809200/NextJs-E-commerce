@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Layout from '../components/Layout';
 import useStyles from '../utils/styles';
 import NextLink from 'next/link';
@@ -15,6 +15,7 @@ import { Store } from '../utils/Store';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 import { Controller, useForm } from 'react-hook-form';
+// import { useSnackbar } from 'notistack5';
 
 export default function Login() {
   const {
@@ -22,6 +23,7 @@ export default function Login() {
     control,
     formState: { errors },
   } = useForm();
+  // const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const router = useRouter();
   const { redirect } = router.query;
   const { state, dispatch } = useContext(Store);
@@ -34,6 +36,7 @@ export default function Login() {
 
   const classes = useStyles();
   const submitHandler = async ({ email, password }) => {
+    // closeSnackbar();
     try {
       const { data } = await axios.post('/api/users/login', {
         email,
@@ -43,7 +46,12 @@ export default function Login() {
       Cookies.set('userInfo', data);
       router.push(redirect || '/');
     } catch (err) {
-      alert(err.response.data ? err.response.data.message : err.message);
+      alert(err.response.data ? err.response.data.message : err.message, {
+        variant: 'error',
+      });
+      //  enqueueSnackbar(err.response.data ? err.response.data.message : err.message, {
+      // variant: 'error',
+      // });
     }
   };
   return (
