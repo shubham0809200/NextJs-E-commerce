@@ -28,7 +28,7 @@ export default function Login() {
   const { redirect } = router.query;
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
-  useEffect(() => {
+  useEffect(() => { 
     if (userInfo) {
       router.push('/');
     }
